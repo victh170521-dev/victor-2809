@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { register } from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export function RegisterPage() {
   const [fullName, setFullName] = useState("");
@@ -10,6 +11,7 @@ export function RegisterPage() {
 
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { refreshUser } = useAuth();
 
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -23,6 +25,7 @@ export function RegisterPage() {
 
   try {
   await register(fullName, email, password);
+  refreshUser();
   navigate("/dashboard");
 } catch (error) {
     if (error instanceof Error) {
@@ -32,44 +35,72 @@ export function RegisterPage() {
 }
 
   return (
-    <div>
+  <div className="auth-page">
+    <div className="auth-card">
       <h1>Crear cuenta</h1>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nombre completo"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
+      <p className="auth-subtitle">
+        Regístrate para comenzar
+      </p>
 
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <form onSubmit={handleSubmit} className="auth-form">
+        <div className="auth-field">
+          <label>Nombre completo</label>
+          <input
+            type="text"
+            placeholder="Nombre completo"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
+        </div>
 
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="auth-field">
+          <label>Correo electrónico</label>
+          <input
+            type="email"
+            placeholder="correo@ejemplo.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-        <input
-          type="password"
-          placeholder="Confirmar contraseña"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+        <div className="auth-field">
+          <label>Contraseña</label>
+          <input
+            type="password"
+            placeholder="Ingresa tu contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-        {error && <p>{error}</p>}
+        <div className="auth-field">
+          <label>Confirmar contraseña</label>
+          <input
+            type="password"
+            placeholder="Confirma tu contraseña"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
 
-        <button type="submit">
+        {error && <p className="auth-error">{error}</p>}
+
+        <button type="submit" className="auth-submit">
           Registrarse
         </button>
       </form>
+
+      <p className="auth-switch">
+        ¿Ya tienes una cuenta?{" "}
+        <button
+          type="button"
+          onClick={() => navigate("/login")}
+        >
+          Inicia sesión
+        </button>
+      </p>
     </div>
-  );
+  </div>
+);
 }
