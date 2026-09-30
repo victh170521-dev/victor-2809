@@ -7,7 +7,7 @@ export async function processPayment(
   request: SnailPayRequest
 ): Promise<SnailPayResponse> {
 
-  console.log("REQUEST BACKEND:", request);
+  //console.log("REQUEST BACKEND:", request);
 
   //validacion vacios
   if (

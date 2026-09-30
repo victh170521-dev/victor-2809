@@ -34,7 +34,7 @@ const [cvv, setCvv] = useState("");
 const [fullName, setFullName] = useState("");
 const [amount, setAmount] = useState("");
 
-const [paymentMessage, setPaymentMessage] = useState("");
+//const [paymentMessage, setPaymentMessage] = useState("");
 
 const [customAmount, setCustomAmount] = useState(false);
 
@@ -48,7 +48,7 @@ const [amountError, setAmountError] = useState("");
 
 async function handleCharge(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
-  setPaymentMessage("");
+  //setPaymentMessage("");
 
   if (!user) {
     return;
