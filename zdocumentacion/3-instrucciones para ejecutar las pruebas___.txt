@@ -1,0 +1,15 @@
+EJECUCIÓN DE PRUEBAS
+
+Las pruebas automatizadas se encuentran en el backend y utilizan Vitest.
+
+Entrar a la carpeta backend:
+
+cd victor-2809/backend
+
+Si aún no se han instalado las dependencias:
+
+npm install
+
+Ejecutar las pruebas:
+
+npm test

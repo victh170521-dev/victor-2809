@@ -1,0 +1,54 @@
+INSTRUCCIONES PARA EJECUTAR EL PROYECTO
+
+Requisitos:
+- Node.js
+- npm
+- Git
+
+1. Clonar el repositorio
+
+git clone https://github.com/victh170521-dev/victor-2809.git
+
+2. Ejecutar el backend
+
+Abrir una terminal y entrar a la carpeta backend:
+
+cd victor-2809/backend
+
+Instalar las dependencias:
+
+npm install
+
+Ejecutar el backend:
+
+npm run dev
+
+El backend se ejecutará localmente en:
+
+http://localhost:3000
+
+
+3. Ejecutar el frontend
+
+Abrir una segunda terminal y entrar a la carpeta frontend:
+
+cd victor-2809/frontend
+
+Instalar las dependencias:
+
+npm install
+
+Ejecutar el frontend:
+
+npm run dev
+
+El frontend mostrará en la terminal la URL local para acceder a la aplicación,
+normalmente:
+
+http://localhost:5173
+
+
+La configuración de desarrollo del frontend ya se encuentra incluida en el
+repositorio y apunta al backend local en:
+
+http://localhost:3000

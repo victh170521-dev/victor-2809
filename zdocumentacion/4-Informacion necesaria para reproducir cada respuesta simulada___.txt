@@ -1,0 +1,73 @@
+CASOS SIMULADOS DE SNAILPAY
+
+Para probar los diferentes resultados de SnailPay, iniciar sesión en la
+aplicación, ingresar a la opción de recarga de saldo y utilizar los
+siguientes datos.
+
+Para todos los casos, salvo que se indique lo contrario, utilizar:
+
+Fecha de vencimiento: 12/26
+CVV: 543
+Nombre: Cualquier valor no vacío
+Monto: Cualquier cantidad mayor a 0
+
+
+---------------------------- COBRO EXITOSO
+
+Número de tarjeta:
+1234123412341234
+
+Resultado:
+Pago aprobado. El saldo del usuario aumenta por el monto ingresado.
+
+
+---------------------------- ERRORES DE TRANSACCIÓN
+
+Tarjeta declinada por el banco:
+4000000000000002
+
+Saldo insuficiente:
+4000000000009995
+
+Tarjeta expirada:
+4000000000000069
+
+CVV inválido:
+4000000000000127
+
+Resultado:
+La operación es rechazada mostrando el motivo correspondiente.
+El saldo del usuario no se modifica.
+
+
+---------------------------- ERROR DEL SISTEMA
+
+Número de tarjeta:
+5000000000000000
+
+Resultado:
+SnailPay devuelve un error interno del sistema.
+La recarga no es aplicada y el saldo del usuario no se modifica.
+
+
+---------------------------- TIMEOUT
+
+Número de tarjeta:
+6000000000000000
+
+Resultado:
+El backend retrasa intencionalmente la respuesta durante 6 segundos.
+El frontend cancela la petición al superar su tiempo de espera y muestra
+el error correspondiente.
+La recarga no es aplicada y el saldo del usuario no se modifica.
+
+
+---------------------------- TARJETA NO RECONOCIDA
+
+Número de tarjeta:
+Cualquier número de tarjeta de 16 dígitos que no corresponda con alguno
+de los casos anteriores.
+
+Resultado:
+La operación es rechazada indicando que la tarjeta ingresada no es válida.
+El saldo del usuario no se modifica.
